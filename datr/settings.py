@@ -84,7 +84,7 @@ AUTH_USER_MODEL = "profiles.User"
 
 # CORS SEttings:
 CORS_ALLOWED_ORIGINS = [
-    "ttp://127.0.0.1:8000",
+    "http://127.0.0.1:8000",
 ]
 
 # Database

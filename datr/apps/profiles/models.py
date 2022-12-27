@@ -1,3 +1,5 @@
+from typing import Union
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -15,6 +17,9 @@ class User(AbstractUser):
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def create_auth_token(sender, instance=None, created=False, **kwargs):
+def create_auth_token(sender, instance=None, created=False, **kwargs) -> Union[Token, None]:
+    """
+    Will create a user auth token when a user is created.
+    """
     if created:
         Token.objects.create(user=instance)
