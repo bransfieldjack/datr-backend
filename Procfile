@@ -1,3 +1,3 @@
-web: gunicorn datr.wsgi:application
+web: gunicorn wsgi:application
 
 release: django-admin migrate --no-input && django-admin collectstatic --no-input
