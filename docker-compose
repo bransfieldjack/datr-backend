@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DB=sample_database
+      - POSTGRES_USER=sample_user
+      - POSTGRES_PASSWORD=sample_password
+    volumes:
+      - ./postgres-volume:/postgres-volume
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code # <--  THIS line enables hot code reloading!
+    env_file:
+      - ./.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  cache:
+    image: redis:4.0.4-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    # Example env_var for local testing: REDIS_URL='redis://:eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81@cache:6379'
