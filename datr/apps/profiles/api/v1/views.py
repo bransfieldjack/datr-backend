@@ -37,9 +37,15 @@ class UserViewSet(viewsets.ModelViewSet):
         responses={200: openapi.Response("OK", UserSerializer)}
     )
     def retrieve(self, request, pk=None):
+
+        print(" ")
+        print("checking if this thing ifres")
+        print(" ")
         queryset = User.objects.all()
         user = get_object_or_404(queryset, pk=pk)
         serializer = UserSerializer(user)
+        print("retrieve fires, output of serializer: ", serializer)
+        print(" ")
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
@@ -49,7 +55,7 @@ class UserViewSet(viewsets.ModelViewSet):
             # A backend authenticated the credentials
             try:
                 user = User.objects.get(
-                    username=_user, password=make_password(request.data['password']))
+                    username=_user)
                 user_token = Token.objects.get(user=user)
                 return Response({"token": str(user_token)})
             except User.DoesNotExist:

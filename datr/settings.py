@@ -1,21 +1,26 @@
-from pathlib import Path
 import os
+from pathlib import Path
 
+import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / '.env')  # new
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-hvj2@+^rn390rk3___lu3_or&m#72aqkoe4o3!^(g@i8#_f!0a"
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+
+APPEND_SLASH = True
 
 # Media storage:
 MEDIA_URL = "/media/"
@@ -82,19 +87,20 @@ REST_FRAMEWORK = {
 # Extend builtin user model:
 AUTH_USER_MODEL = "profiles.User"
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # CORS SEttings:
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
+    "http://127.0.0.1:3000",
+    "http://localhost:3000"
 ]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(os.environ.get('DATABASE_URL'), conn_max_age=600, default='sqlite:///db.sqlite3'),
 }
 
 
