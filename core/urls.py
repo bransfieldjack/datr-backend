@@ -27,8 +27,8 @@ urlpatterns = [
     re_path(r"^redoc/$", login_required(schema_view.with_ui("redoc",
             cache_timeout=0)), name="schema-redoc"),
     path("admin/", admin.site.urls),
-    re_path(r"^api/v1/user/", include(("datr.apps.profiles.api.v1.urls",
-            "datr.apps.profiles.api.v1.urls"), namespace="api_v1_user")),
+    re_path(r"^api/v1/user/", include(("core.apps.profiles.api.v1.urls",
+            "core.apps.profiles.api.v1.urls"), namespace="api_v1_user")),
     re_path(r"^api/v1/token/", obtain_auth_token,
             name='api_v1_token_auth'),
 ]

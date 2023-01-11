@@ -18,7 +18,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+# os.getenv('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
 
 APPEND_SLASH = True
 
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework.authtoken",
     "corsheaders",
-    "datr.apps.profiles",
+    "core.apps.profiles",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-ROOT_URLCONF = "datr.urls"
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
@@ -72,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "datr.wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [

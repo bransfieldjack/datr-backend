@@ -1,3 +1,4 @@
-web: gunicorn datr.wsgi --access-logfile -
+web: gunicorn core.wsgi:application
 
-# release: django-admin migrate --no-input && django-admin collectstatic --no-input
+release: django-admin migrate --no-input && django-admin collectstatic --no-input
+
