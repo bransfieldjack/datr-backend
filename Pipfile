@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 gunicorn = "*"
 install = "*"
 whitenoise = "*"
+openai = "*"
 
 [dev-packages]
 

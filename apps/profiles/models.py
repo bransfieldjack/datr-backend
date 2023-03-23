@@ -11,6 +11,7 @@ from rest_framework.authtoken.models import Token
 class User(AbstractUser):
     bio = models.TextField(blank=True)
     profile_pic = models.ImageField(blank=True)
+    show_onboarding = models.BooleanField(default=True)
 
     def __str__(self):
         return self.username

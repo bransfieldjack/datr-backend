@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework.authtoken",
     "corsheaders",
-    "core.apps.profiles",
+    "apps.profiles",
+    "apps.memberships",
+    "apps.openai",
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,7 @@ MIDDLEWARE = [
 # Static files stored locally using whitenoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-ROOT_URLCONF = "core.urls"
+ROOT_URLCONF = "urls"
 
 TEMPLATES = [
     {
@@ -77,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "core.wsgi.application"
+WSGI_APPLICATION = "wsgi.application"
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [

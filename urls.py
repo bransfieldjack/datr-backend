@@ -1,11 +1,13 @@
 from django.conf.urls import include
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from django.urls import include, path, re_path
+from django.urls import path, re_path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from rest_framework.authtoken.views import obtain_auth_token
+from apps.openai.api.v1.urls import urlpatterns as openai_urls
+from apps.profiles.api.v1.urls import urlpatterns as user_urls
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -27,8 +29,7 @@ urlpatterns = [
     re_path(r"^redoc/$", login_required(schema_view.with_ui("redoc",
             cache_timeout=0)), name="schema-redoc"),
     path("admin/", admin.site.urls),
-    re_path(r"^api/v1/user/", include(("core.apps.profiles.api.v1.urls",
-            "core.apps.profiles.api.v1.urls"), namespace="api_v1_user")),
-    re_path(r"^api/v1/token/", obtain_auth_token,
-            name='api_v1_token_auth'),
+    re_path(r"^api/v1/user/", include(user_urls)),
+    re_path(r"^api/v1/token/", obtain_auth_token),
+    re_path(r"^api/v1/openai/", include(openai_urls)),
 ]

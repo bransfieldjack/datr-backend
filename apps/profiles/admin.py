@@ -12,7 +12,8 @@ class UserAdmin(UserAdmin):
             {
                 'fields': (
                     'bio',
-                    'profile_pic'
+                    'profile_pic',
+                    'show_onboarding',
                 ),
             },
         ),

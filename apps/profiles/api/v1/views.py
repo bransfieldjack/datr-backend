@@ -37,17 +37,19 @@ class UserViewSet(viewsets.ModelViewSet):
         responses={200: openapi.Response("OK", UserSerializer)}
     )
     def retrieve(self, request, pk=None):
+        try:
+            _user: object = Token.objects.get(key=request.auth.key).user
 
-        print(" ")
-        print("checking if this thing ifres")
-        print(" ")
-        queryset = User.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = UserSerializer(user)
-        print("retrieve fires, output of serializer: ", serializer)
-        print(" ")
-        return Response(serializer.data)
+            serializer = UserSerializer(_user)
+            return Response(serializer.data)
+        except Token.DoesNotExist:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
 
+    @swagger_auto_schema(
+        operation_description="Create a new user. ",
+        request_body=UserSerializer,
+        responses={200: openapi.Response("OK", UserSerializer)}
+    )
     def create(self, request, *args, **kwargs):
 
         _user = request.data['username']
