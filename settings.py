@@ -91,17 +91,32 @@ REST_FRAMEWORK = {
     ),
 }
 
+# Swagger
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
+
 # Extend builtin user model:
 AUTH_USER_MODEL = "profiles.User"
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 # CORS SEttings:
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:3000",
-    "http://localhost:3000"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:8000",
+#     "http://127.0.0.1:3000",
+#     "http://localhost:3000"
+# ]
+
+#Openai settings:
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
