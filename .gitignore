@@ -62,6 +62,12 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+# docker
+docker/docker
+docker/docker-compose.yml
+Dockerfile
+docker-compose.yml
+
 # Flask stuff:
 instance/
 .webassets-cache
