@@ -61,7 +61,7 @@ MIDDLEWARE = [
 # Static files stored locally using whitenoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-ROOT_URLCONF = "urls"
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [

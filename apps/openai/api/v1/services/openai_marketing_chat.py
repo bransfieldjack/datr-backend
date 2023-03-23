@@ -1,5 +1,5 @@
 import openai
-import settings
+from core import settings
 
 
 def chat_with_gpt(input):
