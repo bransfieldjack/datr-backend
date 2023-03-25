@@ -5,7 +5,7 @@ from django.urls import path, re_path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
-from rest_framework.authtoken.views import obtain_auth_token
+from apps.profiles.api.v1.views import CustomAuthToken as obtain_auth_token
 from apps.openai.api.v1.urls import urlpatterns as openai_urls
 from apps.profiles.api.v1.urls import urlpatterns as user_urls
 
@@ -30,6 +30,6 @@ urlpatterns = [
             cache_timeout=0)), name="schema-redoc"),
     path("admin/", admin.site.urls),
     re_path(r"^api/v1/user/", include(user_urls)),
-    re_path(r"^api/v1/token/", obtain_auth_token),
+    re_path(r"^api/v1/token/", obtain_auth_token.as_view()),
     re_path(r"^api/v1/openai/", include(openai_urls)),
 ]

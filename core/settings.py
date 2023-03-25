@@ -89,7 +89,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
 }
@@ -109,14 +109,9 @@ SWAGGER_SETTINGS = {
 # Extend builtin user model:
 AUTH_USER_MODEL = "profiles.User"
 
+# CORS Settings:
 CORS_ALLOW_ALL_ORIGINS = True
 
-# CORS SEttings:
-# CORS_ALLOWED_ORIGINS = [
-#     "http://127.0.0.1:8000",
-#     "http://127.0.0.1:3000",
-#     "http://localhost:3000"
-# ]
 
 #Openai settings:
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')

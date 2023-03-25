@@ -1,15 +1,10 @@
-from django.http import Http404
-from django.shortcuts import render
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import generics, status, viewsets
-from rest_framework.generics import ListCreateAPIView
+from rest_framework import authentication, status
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
-from rest_framework import authentication
+
 from .serializers import MarketingChatSerializer
-from apps.profiles.api.v1.utils import CustomizedUserPermission
 
 
 class MarketingGptViewset(ViewSet):

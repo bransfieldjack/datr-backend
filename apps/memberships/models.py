@@ -9,4 +9,4 @@ class Membership(models.Model):
     stripe_plan_id = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.membership_type
+        return self.stripe_plan_id
