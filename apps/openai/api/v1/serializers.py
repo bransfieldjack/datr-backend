@@ -7,3 +7,4 @@ class MarketingChatSerializer(serializers.Serializer):
     keywords = serializers.CharField(max_length=500)
     tone = serializers.CharField(max_length=200)
     output_format = serializers.CharField(max_length=200)
+    hashtags = serializers.CharField(max_length=300)

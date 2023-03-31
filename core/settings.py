@@ -113,7 +113,7 @@ AUTH_USER_MODEL = "profiles.User"
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-#Openai settings:
+# Openai settings:
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 # Database
