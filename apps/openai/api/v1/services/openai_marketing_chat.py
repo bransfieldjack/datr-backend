@@ -12,7 +12,7 @@ def chat_with_gpt(input):
     f"The subject or tone of the content should be {input.get('tone', None)}. \n"
     f"The output should be formatted for a {input.get('output_format', None)} and should be seperated by paragraphs. \n"
 
-    HASHTAGS = f"\n {input.get('hashtags', None)}. \n"
+    HASHTAGS = f"\n {input.get('hashtags', None)} \n"
 
     try:
         print("calling chatgpt")
