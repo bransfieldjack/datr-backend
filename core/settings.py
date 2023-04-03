@@ -106,6 +106,11 @@ SWAGGER_SETTINGS = {
     }
 }
 
+# Stripe settings
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+
+
 # Extend builtin user model:
 AUTH_USER_MODEL = "profiles.User"
 

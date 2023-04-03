@@ -16,6 +16,7 @@ gunicorn = "*"
 install = "*"
 whitenoise = "*"
 openai = "*"
+stripe = "*"
 
 [dev-packages]
 

@@ -8,6 +8,7 @@ from rest_framework import permissions
 from apps.profiles.api.v1.views import CustomAuthToken as obtain_auth_token
 from apps.openai.api.v1.urls import urlpatterns as openai_urls
 from apps.profiles.api.v1.urls import urlpatterns as user_urls
+from apps.memberships.api.v1.urls import urlpatterns as membership_urls
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -32,4 +33,5 @@ urlpatterns = [
     re_path(r"^api/v1/user/", include(user_urls)),
     re_path(r"^api/v1/token/", obtain_auth_token.as_view()),
     re_path(r"^api/v1/openai/", include(openai_urls)),
+    re_path(r"^api/v1/stripe/", include(membership_urls)),
 ]
